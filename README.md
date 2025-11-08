@@ -67,3 +67,66 @@ FROM
 JOIN PASIEN P ON RJ.id_pasien = P.id_pasien
 JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
 LEFT JOIN REKAM_MEDIS RM ON RJ.id_rawat_jalan = RM.id_rawat_jalan;
+
+SELECT
+    P.nama_pasien,
+    D.nama_dokter,
+    D.spesialisasi,
+    RJ.tgl_kunjungan,
+    RJ.keluhan,
+    RM.diagnosis
+FROM
+    RAWAT_JALAN RJ
+JOIN PASIEN P ON RJ.id_pasien = P.id_pasien
+JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
+LEFT JOIN REKAM_MEDIS RM ON RJ.id_rawat_jalan = RM.id_rawat_jalan;
+
+SELECT
+    D.spesialisasi,
+    COUNT(RJ.id_rawat_jalan) AS total_kunjungan
+FROM
+    RAWAT_JALAN RJ
+JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
+GROUP BY
+    D.spesialisasi
+ORDER BY
+    total_kunjungan DESC;
+
+SELECT
+    P.nama_pasien,
+    DP.pekerjaan,
+    SUM(T.biaya) AS total_biaya_tindakan
+FROM
+    PASIEN P
+JOIN DETAIL_PASIEN DP ON P.id_pasien = DP.id_pasien
+JOIN RAWAT_JALAN RJ ON P.id_pasien = RJ.id_pasien
+JOIN REKAM_MEDIS RM ON RJ.id_rawat_jalan = RM.id_rawat_jalan
+JOIN TINDAKAN_REKAM_MEDIS TRM ON RM.id_rekam_medis = TRM.id_rekam_medis
+JOIN TINDAKAN T ON TRM.id_tindakan = T.id_tindakan
+GROUP BY
+    P.nama_pasien, DP.pekerjaan
+ORDER BY
+    total_biaya_tindakan DESC;
+
+SELECT
+    RM.diagnosis,
+    T.nama_tindakan,
+    TRM.Catatan
+FROM
+    REKAM_MEDIS RM
+JOIN TINDAKAN_REKAM_MEDIS TRM ON RM.id_rekam_medis = TRM.id_rekam_medis
+JOIN TINDAKAN T ON TRM.id_tindakan = T.id_tindakan
+WHERE
+    RM.diagnosis LIKE '%bronkitis akut%';
+
+SELECT
+    P.nama_pasien,
+    (YEAR(CURDATE()) - YEAR(P.tgl_lahir)) AS usia_pasien,
+    D.nama_dokter,
+    D.spesialisasi
+FROM
+    PASIEN P
+JOIN RAWAT_JALAN RJ ON P.id_pasien = RJ.id_pasien
+JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
+WHERE
+    (YEAR(CURDATE()) - YEAR(P.tgl_lahir)) > 30;
