@@ -131,13 +131,3 @@ JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
 WHERE
     (YEAR(CURDATE()) - YEAR(P.tgl_lahir)) > 30;
 
-### 💎 Ringkasan Proyek Database Rumah Sakit (Tinjauan Profesional)
-Proyek ini adalah implementasi basis data relasional menggunakan MySQL yang dirancang untuk mengelola data operasional Rawat Jalan (Outpatient Management). Basis data ini berfungsi sebagai kerangka kerja yang solid untuk sistem informasi manajemen rumah sakit.
-
-Fokus Inti dan Pencapaian Utama
-Aspek,Detail Pencapaian Proyek,Penjelasan
-Normalisasi Data,Penerapan 3NF (Third Normal Form).,"Data dipisahkan secara logis ke dalam 7 tabel (misalnya, PASIEN, DOKTER, TINDAKAN). Hal ini menghilangkan redundansi dan menjamin konsistensi data."
-Integritas Referensial,Penggunaan Foreign Key (FK) dengan aksi ON DELETE CASCADE.,"Memastikan bahwa tidak ada data riwayat (misalnya, RAWAT_JALAN) yang merujuk pada ID pasien atau dokter yang sudah terhapus, menjaga keandalan data."
-Relasi Kompleks,Implementasi relasi Many-to-Many.,"Menggunakan tabel penghubung (TINDAKAN_REKAM_MEDIS) untuk secara akurat mencatat bahwa satu diagnosis dapat melibatkan banyak tindakan, dan satu tindakan dapat dicatat di banyak diagnosis."
-Penguasaan SQL,"Menguasai CRUD (Create, Read, Update, Delete) dan DDL.","Anda mahir dalam membangun struktur (CREATE TABLE) dan memanipulasi data (INSERT, UPDATE, DELETE) secara efektif."
-Analisis Data (DQL),Kemampuan Multi-Join dan Agregasi.,"Demonstrasi query yang menggabungkan 4-5 tabel (RAWAT_JALAN, PASIEN, DOKTER, REKAM_MEDIS) dan menggunakan GROUP BY untuk menghasilkan laporan klinis/operasional."
