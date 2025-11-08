@@ -131,7 +131,7 @@ JOIN DOKTER D ON RJ.id_dokter = D.id_dokter
 WHERE
     (YEAR(CURDATE()) - YEAR(P.tgl_lahir)) > 30;
 
-## 💎 Ringkasan Proyek Database Rumah Sakit (Tinjauan Profesional)
+### 💎 Ringkasan Proyek Database Rumah Sakit (Tinjauan Profesional)
 Proyek ini adalah implementasi basis data relasional menggunakan MySQL yang dirancang untuk mengelola data operasional Rawat Jalan (Outpatient Management). Basis data ini berfungsi sebagai kerangka kerja yang solid untuk sistem informasi manajemen rumah sakit.
 
 Fokus Inti dan Pencapaian Utama
