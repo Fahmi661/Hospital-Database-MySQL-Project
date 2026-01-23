@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZetFour Professional Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['JetBrains Mono', 'monospace'],
+              brand: ['Orbitron', 'sans-serif'],
+            },
+            boxShadow: {
+              'glow': '0 0 20px rgba(79, 70, 229, 0.35)',
+              'glow-red': '0 0 20px rgba(220, 38, 38, 0.4)',
+              'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+            },
+            colors: {
+              brand: {
+                dark: '#0B0C10',
+                panel: '#1F2833',
+                teal: '#66FCF1',
+                gray: '#C5C6C7'
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+      }
+    }
+    </script>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        background-color: #050505;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-white antialiased">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
